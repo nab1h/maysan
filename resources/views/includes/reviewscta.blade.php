@@ -6,7 +6,7 @@
 
             <div class="lg:w-1/2 relative min-h-[300px] lg:min-h-[500px]">
                 <img src="cta.jpeg"
-                    alt="فرع ميثان"
+                    alt="فرع ميسان"
                     class="absolute inset-0 w-full h-full object-cover">
 
                 <div class="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-l from-[#135158] via-[#135158]/50 to-transparent"></div>
@@ -26,7 +26,7 @@
                     </div>
 
                     <h2 class="text-3xl sm:text-4xl font-extrabold text-white leading-tight mb-3">
-                        هل زرتِ فرع من فروع ميثان؟
+                        هل زرتِ فرع من فروع ميسان؟
                     </h2>
                     <h3 class="text-xl sm:text-2xl font-bold text-gold-400 mb-4">
                         شاركينا رأيكِ وتجربتكِ!

@@ -241,61 +241,84 @@
 <script>
     lucide.createIcons();
     // ===== NAVBAR SCROLL =====
-    const navbar = document.getElementById('navbar');
-    const navInner = document.getElementById('navInner');
-    const logo = document.getElementById('logo');
 
-    window.addEventListener('scroll', () => {
-        if (navbar) {
+    document.addEventListener('DOMContentLoaded', function() {
+
+        // 1. عناصر قائمة الموبايل
+        const menuBtn = document.getElementById('menuBtn');
+        const closeMenuBtn = document.getElementById('closeMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+
+        // 2. عناصر الدروب داون (الخدمات)
+        const mobileServicesBtn = document.getElementById('mobileServicesBtn');
+        const mobileServicesMenu = document.getElementById('mobileServicesMenu');
+        const servicesChevron = document.getElementById('servicesChevron');
+
+        // فتح قائمة الموبايل
+        if (menuBtn) {
+            menuBtn.addEventListener('click', function() {
+                mobileMenu.classList.add('open');
+                menuOverlay.classList.remove('hidden');
+                setTimeout(() => menuOverlay.classList.add('opacity-100'), 10);
+                document.body.style.overflow = 'hidden'; // منع سكرول الصفحة
+            });
+        }
+
+        // إغلاق قائمة الموبايل
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('open');
+            menuOverlay.classList.remove('opacity-100');
+            setTimeout(() => {
+                menuOverlay.classList.add('hidden');
+                document.body.style.overflow = ''; // إرجاع السكرول
+            }, 300);
+        }
+
+        if (closeMenuBtn) {
+            closeMenuBtn.addEventListener('click', closeMobileMenu);
+        }
+        if (menuOverlay) {
+            menuOverlay.addEventListener('click', closeMobileMenu);
+        }
+
+        // 3. تشغيل الدروب داون الخاص بالخدمات في الموبايل
+        if (mobileServicesBtn) {
+            mobileServicesBtn.addEventListener('click', function() {
+                // تبديل إظهار وإخفاء القائمة الفرعية
+                mobileServicesMenu.classList.toggle('hidden');
+                mobileServicesMenu.classList.toggle('flex');
+
+                // تدوير سهم الخدمات
+                if (servicesChevron) {
+                    servicesChevron.classList.toggle('rotate-180');
+                }
+            });
+        }
+
+        // 4. تصغير الهيدر عند التمرير (اختياري - للحفاظ على تناسق التصميم)
+        const navbar = document.getElementById('navbar');
+        const navInner = document.getElementById('navInner');
+        const logo = document.getElementById('logo');
+
+        window.addEventListener('scroll', function() {
             if (window.scrollY > 50) {
                 navbar.classList.add('nav-scrolled');
-                if (navInner) {
-                    navInner.classList.remove('h-40');
-                    navInner.classList.add('h-20');
-                }
-                if (logo) {
-                    logo.classList.remove('h-40');
-                    logo.classList.add('h-16');
-                }
+                navInner.style.height = '80px'; // تصغير الهيدر
+                logo.style.height = '70px'; // تصغير الشعار
             } else {
                 navbar.classList.remove('nav-scrolled');
-                if (navInner) {
-                    navInner.classList.remove('h-20');
-                    navInner.classList.add('h-40');
-                }
-                if (logo) {
-                    logo.classList.remove('h-16');
-                    logo.classList.add('h-40');
-                }
+                navInner.style.height = '160px'; // الحجم الأصلي
+                logo.style.height = '160px'; // الحجم الأصلي
             }
+        });
+
+        // إعادة تشغيل أيقونات Lucide (مهم جداً للعناصر التي تظهر ديناميكياً)
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
         }
+
     });
-
-    // ===== MOBILE MENU =====
-    const menuBtn = document.getElementById('menuBtn');
-    const closeMenuBtn = document.getElementById('closeMenu');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const menuOverlay = document.getElementById('menuOverlay');
-
-    function openMenu() {
-        if (!mobileMenu || !menuOverlay) return;
-        mobileMenu.classList.add('open');
-        menuOverlay.classList.remove('hidden');
-        setTimeout(() => menuOverlay.style.opacity = '1', 10);
-        document.body.style.overflow = 'hidden';
-    }
-
-    function closeMenu() {
-        if (!mobileMenu || !menuOverlay) return;
-        mobileMenu.classList.remove('open');
-        menuOverlay.style.opacity = '0';
-        setTimeout(() => menuOverlay.classList.add('hidden'), 300);
-        document.body.style.overflow = '';
-    }
-
-    if (menuBtn) menuBtn.addEventListener('click', openMenu);
-    if (closeMenuBtn) closeMenuBtn.addEventListener('click', closeMenu);
-    if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
 
     // ===== SMOOTH SCROLL (النسخة المصححة للموبايل) =====
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
