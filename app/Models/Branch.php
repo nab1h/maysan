@@ -29,4 +29,12 @@ class Branch extends Model
     {
         return $this->hasMany(User::class);
     }
+    public function reels()
+    {
+        return $this->hasMany(Reel::class);
+    }
+    public function doctors()
+    {
+        return $this->hasMany(Doctor::class);
+    }
 }

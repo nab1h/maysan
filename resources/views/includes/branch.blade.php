@@ -1,6 +1,5 @@
 <!-- ===== BRANCHES SECTION ===== -->
 @isset($branches)
-<!-- حاوية Alpine.js لإدارة حالة الـ Modal -->
 <div x-data="{ showMap: false, mapUrl: '' }">
 
     <section id="branches" class="py-20 bg-white">
@@ -32,7 +31,6 @@
                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                         @endif
 
-                        <!-- زر انستجرام فوق الصورة -->
                         @if($branch->instagram ?? '')
                         <a href="{{ $branch->instagram }}" target="_blank"
                             class="absolute top-4 left-4 w-10 h-10 rounded-full bg-brand-900/60 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-pink-500 transition-colors z-10">
@@ -40,7 +38,6 @@
                         </a>
                         @endif
 
-                        <!-- شارة اسم المنطقة -->
                         @if($branch->location)
                         <div class="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm px-4 py-1.5 rounded-full text-brand-900 text-xs font-bold shadow-md z-10">
                             {{ $branch->location->name }}
@@ -48,20 +45,16 @@
                         @endif
                     </div>
 
-                    <!-- محتوى الكارت -->
                     <div class="p-6">
-                        <!-- اسم الفرع -->
-                        <h3 class="text-xl font-bold text-brand-900 mb-2">{{ $branch->name }}</h3>
+                        <a href="{{ route('branch.show', $branch->id) }}" class="text-xl font-bold text-brand-900 mb-2 block hover:text-gold-500 transition-colors">ميسان {{ $branch->name }}</a>
 
-                        <!-- العنوان -->
+
                         <p class="text-gray-500 text-sm flex items-start gap-2 mb-6">
                             <i data-lucide="map-pin" class="w-4 h-4 text-gold-400 mt-0.5 flex-shrink-0"></i>
                             {{ $branch->address ?? 'الرياض، حي العليا' }}
                         </p>
 
-                        <!-- أزرار التواصل والخريطة -->
                         <div class="flex items-center gap-3 mb-5">
-                            <!-- زر الخريطة (يفتح الـ Modal) -->
                             @if($branch->google_map_url ?? '')
                             <button @click="mapUrl = '{{ $branch->map_url ?? 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d463878.2174996858!2d46.54271704999999!3d24.725195199999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2f03890d489399%3A0xba974d1c98e79fd5!2z2KfZhNix2YrYp9i2!5e0!3m2!1sar!2ssa!4v1690456789100!5m2!1sar!2ssa' }}'; showMap = true"
                                 class="w-10 h-10 rounded-xl bg-white border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-brand-900 hover:text-white hover:border-brand-900 transition-all shadow-sm"
@@ -90,6 +83,12 @@
                             class="w-full flex items-center justify-center gap-2 bg-[#135158] text-white font-bold py-3 rounded-xl hover:bg-[#1a6b73] transition-all duration-300 shadow-md hover:shadow-lg group/btn">
                             <i data-lucide="calendar-check" class="w-5 h-5 group-hover/btn:animate-bounce"></i>
                             احجزي في هذا الفرع
+                        </a>
+
+                        <a href="{{ route('branch.show', $branch->id) }}"
+                            class="w-full flex items-center mt-5 justify-center gap-2 bg-[#135158] text-white font-bold py-3 rounded-xl hover:bg-[#1a6b73] transition-all duration-300 shadow-md hover:shadow-lg group/btn">
+                            <i data-lucide="calendar-check" class="w-5 h-5 group-hover/btn:animate-bounce"></i>
+                            تفاصيل الفرع
                         </a>
                     </div>
                 </div>

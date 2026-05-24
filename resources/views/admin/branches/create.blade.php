@@ -69,7 +69,7 @@
                         </div>
                         <div>
                             <label class="block text-sm font-semibold text-gray-700 mb-2"><i class="fa-solid fa-map-location-dot ml-1 text-green-500"></i> رابط جوجل ماب</label>
-                            <input type="url" name="google_map_url" value="{{ old('google_map_url') }}" dir="ltr" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-left text-sm focus:outline-none focus:ring-2 focus:ring-[#135158]/20 focus:border-[#135158] transition" placeholder="https://maps.app.goo.gl/...">
+                            <input type="text" name="google_map_url" value="{{ old('google_map_url') }}" dir="ltr" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-left text-sm focus:outline-none focus:ring-2 focus:ring-[#135158]/20 focus:border-[#135158] transition" placeholder="https://maps.app.goo.gl/...">
                         </div>
                     </div>
 

@@ -37,6 +37,7 @@ Route::get('/about', [AboutController::class, 'index'])->name('about.index');
 Route::get('/booking', [BookingController::class, 'index'])->name('booking.index');
 Route::get('/reviews', [ReviewsController::class, 'index'])->name('reviews.index');
 Route::get('/branches', [BranchesController::class, 'index'])->name('branches.index');
+Route::get('/branch/{branch}', [BranchesController::class, 'show'])->name('branch.show');
 Route::get('/results', [ResultsController::class, 'index'])->name('results.index');
 Route::get('/alldepart', [AlldepartController::class, 'index'])->name('alldepart.index');
 Route::get('/offers', [OfferpageController::class, 'index'])->name('offers.index');
@@ -136,6 +137,7 @@ Route::middleware('auth')->group(
 
             Route::prefix('admin')->name('admin.')->group(function () {
                 Route::resource('articles', ArticleController::class);
+                Route::resource('reels', \App\Http\Controllers\Admin\ReelController::class);
             });
         });
     }

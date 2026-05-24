@@ -386,14 +386,14 @@
                 <div class="hidden lg:flex items-center gap-1">
                     <a href="{{ route('home') }}" class="nav-link px-5 py-2 rounded-full text-brand-800 font-semibold bg-brand-50 transition-all duration-300">الرئيسية</a>
                     <a href="{{ route('about.index') }}" class="nav-link px-5 py-2 rounded-full text-gray-500 hover:text-brand-800 hover:bg-brand-50 font-medium transition-300">حول</a>
+
+                    <!-- خدمات Dropdown -->
                     <div class="relative group">
                         <a href="#services" class="nav-link flex items-center gap-1">
                             الخدمات
                             <i data-lucide="chevron-down" class="w-4 h-4 transition-transform group-hover:rotate-180"></i>
                         </a>
-
                         <div class="absolute top-full right-0 w-56 bg-white rounded-2xl shadow-xl shadow-brand-800/10 border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50 pt-2">
-
                             <div class="px-4 py-2 border-b border-gray-100">
                                 <p class="text-xs text-gray-400 font-bold uppercase">الأقسام</p>
                             </div>
@@ -409,9 +409,35 @@
                             </div>
                         </div>
                     </div>
+
                     <a href="{{ route('offers.index') }}" class="nav-link px-5 py-2 rounded-full text-gray-500 hover:text-brand-800 hover:bg-brand-50 font-medium transition-300">العروض</a>
-                    <a href="{{ route('branches.index') }}" class="nav-link px-5 py-2 rounded-full text-gray-500 hover:text-brand-800 hover:bg-brand-50 font-medium transition-all duration-300">الفروع</a>
-                    <a href="{{ route('team.index') }}" class="nav-link px-5 py-2 rounded-full text-gray-500 hover:text-brand-800 hover:bg-brand-50 font-medium transition-all duration-300">الإطباء</a>
+
+                    <!-- الفروع Dropdown (جديد) -->
+                    <div class="relative group">
+                        <a href="{{ route('branches.index') }}" class="nav-link flex items-center gap-1">
+                            الفروع
+                            <i data-lucide="chevron-down" class="w-4 h-4 transition-transform group-hover:rotate-180"></i>
+                        </a>
+                        <div class="absolute top-full right-0 w-56 bg-white rounded-2xl shadow-xl shadow-brand-800/10 border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50 pt-2">
+                            <div class="px-4 py-2 border-b border-gray-100">
+                                <p class="text-xs text-gray-400 font-bold uppercase">فروعنا</p>
+                            </div>
+                            <div class="py-2">
+                                <a href="{{ route('branches.index') }}" class="flex items-center gap-3 px-4 py-3 hover:bg-brand-50 transition-colors group/item">
+                                    <span class="text-sm font-medium text-gray-700 group-hover/item:text-brand-900">جميع الفروع</span>
+                                </a>
+                                @isset($branches)
+                                @foreach($branches as $branch)
+                                <a href="{{ route('branch.show', $branch->id) }}" class="flex items-center gap-3 px-4 py-3 hover:bg-brand-50 transition-colors group/item">
+                                    <span class="text-sm font-medium text-gray-700 group-hover/item:text-brand-900">ميسان {{ $branch->name }}</span>
+                                </a>
+                                @endforeach
+                                @endisset
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="{{ route('team.index') }}" class="nav-link px-5 py-2 rounded-full text-gray-500 hover:text-brand-800 hover:bg-brand-50 font-medium transition-all duration-300">الأطباء</a>
                     <a href="{{ route('articles.index') }}" class="nav-link px-5 py-2 rounded-full text-gray-500 hover:text-brand-800 hover:bg-brand-50 font-medium transition-all duration-300">المقالات</a>
                     <a href="{{ route('contact.index') }}" class="nav-link px-5 py-2 rounded-full text-gray-500 hover:text-brand-800 hover:bg-brand-50 font-medium transition-all duration-300">اتصل بنا</a>
                 </div>
@@ -468,7 +494,23 @@
                 </div>
 
                 <a href="{{ route('offers.index') }}" class="mobile-link px-4 py-3 rounded-xl text-gray-600 hover:bg-brand-50 hover:text-brand-800 transition-colors">العروض</a>
-                <a href="{{ route('branches.index') }}" class="mobile-link px-4 py-3 rounded-xl text-gray-600 hover:bg-brand-50 hover:text-brand-800 transition-colors">الفروع</a>
+
+                <!-- Branches Accordion for Mobile (جديد) -->
+                <div class="flex flex-col">
+                    <button id="mobileBranchesBtn" class="flex items-center justify-between w-full px-4 py-3 rounded-xl text-gray-600 hover:bg-brand-50 hover:text-brand-800 transition-colors">
+                        <span>الفروع</span>
+                        <i data-lucide="chevron-down" class="w-4 h-4 transition-transform duration-300" id="branchesChevron"></i>
+                    </button>
+                    <div id="mobileBranchesMenu" class="hidden flex-col gap-1 pr-4 mt-1">
+                        <a href="{{ route('branches.index') }}" class="px-4 py-2 rounded-lg text-sm text-gray-500 hover:bg-brand-50 hover:text-brand-800 transition-colors">جميع الفروع</a>
+                        @isset($branches)
+                        @foreach($branches as $branch)
+                        <a href="{{ route('branch.show', $branch->id) }}" class="px-4 py-2 rounded-lg text-sm text-gray-500 hover:bg-brand-50 hover:text-brand-800 transition-colors">ميسان {{ $branch->name }}</a>
+                        @endforeach
+                        @endisset
+                    </div>
+                </div>
+
                 <a href="{{ route('team.index') }}" class="mobile-link px-4 py-3 rounded-xl text-gray-600 hover:bg-brand-50 hover:text-brand-800 transition-colors">الأطباء</a>
                 <a href="{{ route('articles.index') }}" class="mobile-link px-4 py-3 rounded-xl text-gray-600 hover:bg-brand-50 hover:text-brand-800 transition-colors">المقالات</a>
                 <a href="{{ route('contact.index') }}" class="mobile-link px-4 py-3 rounded-xl text-gray-600 hover:bg-brand-50 hover:text-brand-800 transition-colors">اتصل بنا</a>

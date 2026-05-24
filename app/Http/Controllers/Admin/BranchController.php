@@ -31,7 +31,7 @@ class BranchController extends Controller
             'address'        => 'required|string',
             'image'          => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
             'instagram_url'  => 'nullable|url|max:255',
-            'google_map_url' => 'nullable|url|max:255',
+            'google_map_url' => 'nullable',
         ], [
             'location_id.required' => 'يرجى اختيار المكان',
             'name.required'        => 'اسم الفرع مطلوب',
@@ -69,7 +69,7 @@ class BranchController extends Controller
             'address'        => 'required|string',
             'image'          => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
             'instagram_url'  => 'nullable|url|max:255',
-            'google_map_url' => 'nullable|url|max:255',
+            'google_map_url' => 'nullable',
         ], [
             'location_id.required' => 'يرجى اختيار المكان',
             'name.required'        => 'اسم الفرع مطلوب',

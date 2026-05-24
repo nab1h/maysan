@@ -114,7 +114,6 @@
                 </ul>
             </div>
 
-            <!-- الخدمات (Dynamic) -->
             <div>
                 <h4 class="font-bold text-lg mb-6 flex items-center gap-2">
                     <span class="w-2 h-2 bg-gold-400 rounded-full"></span>
@@ -134,7 +133,6 @@
                 </ul>
             </div>
 
-            <!-- روابط سريعة و التواصل (Dynamic) -->
             <div>
                 <h4 class="font-bold text-lg mb-6 flex items-center gap-2">
                     <span class="w-2 h-2 bg-gold-400 rounded-full"></span>
@@ -244,18 +242,15 @@
 
     document.addEventListener('DOMContentLoaded', function() {
 
-        // 1. عناصر قائمة الموبايل
         const menuBtn = document.getElementById('menuBtn');
         const closeMenuBtn = document.getElementById('closeMenu');
         const mobileMenu = document.getElementById('mobileMenu');
         const menuOverlay = document.getElementById('menuOverlay');
 
-        // 2. عناصر الدروب داون (الخدمات)
         const mobileServicesBtn = document.getElementById('mobileServicesBtn');
         const mobileServicesMenu = document.getElementById('mobileServicesMenu');
         const servicesChevron = document.getElementById('servicesChevron');
 
-        // فتح قائمة الموبايل
         if (menuBtn) {
             menuBtn.addEventListener('click', function() {
                 mobileMenu.classList.add('open');
@@ -265,7 +260,6 @@
             });
         }
 
-        // إغلاق قائمة الموبايل
         function closeMobileMenu() {
             mobileMenu.classList.remove('open');
             menuOverlay.classList.remove('opacity-100');
@@ -282,21 +276,30 @@
             menuOverlay.addEventListener('click', closeMobileMenu);
         }
 
-        // 3. تشغيل الدروب داون الخاص بالخدمات في الموبايل
         if (mobileServicesBtn) {
             mobileServicesBtn.addEventListener('click', function() {
-                // تبديل إظهار وإخفاء القائمة الفرعية
                 mobileServicesMenu.classList.toggle('hidden');
                 mobileServicesMenu.classList.toggle('flex');
 
-                // تدوير سهم الخدمات
                 if (servicesChevron) {
                     servicesChevron.classList.toggle('rotate-180');
                 }
             });
         }
 
-        // 4. تصغير الهيدر عند التمرير (اختياري - للحفاظ على تناسق التصميم)
+        // branches
+        const mobileBranchesBtn = document.getElementById('mobileBranchesBtn');
+        const mobileBranchesMenu = document.getElementById('mobileBranchesMenu');
+        const branchesChevron = document.getElementById('branchesChevron');
+
+        if (mobileBranchesBtn) {
+            mobileBranchesBtn.addEventListener('click', () => {
+                mobileBranchesMenu.classList.toggle('hidden');
+                mobileBranchesMenu.classList.toggle('flex');
+                branchesChevron.classList.toggle('rotate-180');
+            });
+        }
+        // =================================
         const navbar = document.getElementById('navbar');
         const navInner = document.getElementById('navInner');
         const logo = document.getElementById('logo');

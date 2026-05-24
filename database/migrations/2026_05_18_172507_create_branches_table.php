@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->string('phone');
             $table->string('instagram_url')->nullable();
-            $table->string('google_map_url')->nullable();
+            $table->text('google_map_url')->nullable();
             $table->text('address');
             $table->timestamps();
         });
