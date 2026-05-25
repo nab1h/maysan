@@ -63,6 +63,12 @@
                             </button>
                             @endif
 
+                            <a href="{{ $branch->instagram_url }}" target="_blank"
+                                class="w-10 h-10 rounded-xl bg-white border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-pink-500 hover:text-white hover:border-pink-500 transition-all shadow-sm"
+                                title="Instagram">
+                                <i class="fab fa-instagram text-lg"></i>
+                            </a>
+
                             <!-- زر الواتساب -->
                             <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $branch->phone ?? '966500000000') }}" target="_blank"
                                 class="w-10 h-10 rounded-xl bg-white border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-green-500 hover:text-white hover:border-green-500 transition-all shadow-sm"

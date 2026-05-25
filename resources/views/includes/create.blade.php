@@ -2,7 +2,7 @@
     <div class="w-full max-w-6xl mx-auto bg-white rounded-3xl shadow-2xl shadow-[#135158]/10 flex flex-col lg:flex-row overflow-hidden border border-gray-100">
 
         <!-- النصف الأيمن: الصورة والديكور (مخفي في الموبايل، يظهر في الشاشات الكبيرة) -->
-        <div class="hidden lg:block lg:w-1/2 relative bg-cover bg-center" style="background-image: url('booking.jpg');">
+        <div class="hidden lg:block lg:w-1/2 relative bg-cover bg-center" style="background-image: url('/booking.jpg');">
             <!-- تدرج لوني فوق الصورة لجعل النص مقروء وإعطاء طابع فاخر -->
             <div class="absolute inset-0 bg-gradient-to-t from-[#135158] via-[#135158]/80 to-[#135158]/40"></div>
         </div>

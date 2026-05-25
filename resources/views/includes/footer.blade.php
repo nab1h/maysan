@@ -55,7 +55,7 @@
                         @endisset
                     </div>
                 </div>
-                <p class="text-white/60 leading-relaxed mb-8 max-w-sm">{{ $setting->meta_description ?? 'وجهتك الأولى للجمال والأناقة. نقدم أحدث تقنيات التجميل بأيدي خبراء معتمدين دولياً في بيئة تجمع بين الراحة والفخامة.' }}</p>
+                <p class="text-white/60 leading-relaxed mb-8 max-w-sm">{{ $content->about_desc_ar ?? 'وجهتك الأولى للجمال والأناقة. نقدم أحدث تقنيات التجميل بأيدي خبراء معتمدين دولياً في بيئة تجمع بين الراحة والفخامة.' }}</p>
 
                 <!-- Social Links (Dynamic) -->
                 <div class="flex items-center gap-3 flex-wrap">

@@ -59,8 +59,8 @@
                     </a>
                     @endif
 
-                    @if($branch->instagram ?? '')
-                    <a href="{{ $branch->instagram }}" target="_blank" class="flex items-center gap-4 group/item">
+                    @if($branch->instagram_url ?? '')
+                    <a href="{{ $branch->instagram_url }}" target="_blank" class="flex items-center gap-4 group/item">
                         <div class="w-14 h-14 rounded-2xl bg-pink-50 flex items-center justify-center text-pink-500 group-hover/item:bg-gradient-to-br group-hover/item:from-purple-500 group-hover/item:to-pink-500 group-hover/item:text-white transition-all duration-300 shadow-sm">
                             <i class="fa-brands fa-instagram text-2xl"></i>
                         </div>
